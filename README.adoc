@@ -5,6 +5,19 @@ We should be able to use parts of OFBiz to build compatible apps and services.
 
 This repo is an example on how you could do that from Java and Clojure.
 
+For convenience the repo contains pre-built libraries from the branch in the PR above.
+
+If you like to build them locally, clone and publish:
+
+[source,shell]
+--
+git clone https://github.com/ieugen/ofbiz-framework.git
+cd ofbiz-framework
+
+./gradlew clean build -xtest publishToMavenLocal -Pversion=22.01.10
+--
+
+This is how to run the code to see results:
 
 [source,shell]
 --
