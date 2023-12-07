@@ -1,0 +1,40 @@
+= Using OFBiz parts as libraries to build other tools
+
+Once OFBiz merges the changes in PR https://github.com/apache/ofbiz-framework/pull/678 .
+We should be able to use parts of OFBiz to build compatible apps and services.
+
+This repo is an example on how you could do that from Java and Clojure.
+
+
+[source,shell]
+--
+# Run the main class 'MyCryptExample' via gradle
+
+./gradlew -q run
+Encrypted password is{PBKDF2-SHA256}10000$Wy0yNCwgLTEwLCAxMDAsIC0xNSwgLTg3LCAyMCwgNTgsIC0xMDAsIC05MSwgLTUwLCAxMTQsIDc1
+LCAtODAsIC04LCA4MywgNTdd$mNkGgwIq6JcCDa2EneRFxa/iDCbKMaQ9VSksLkHoJ6Q=
+
+ /gradlew -q run --args="my-new-pass"
+Encrypt password my-new-pass
+Encrypted password is{PBKDF2-SHA256}10000$WzEsIDExMiwgLTEzLCAtNzYsIC0xMjIsIC0xMTMsIC0xMjIsIC00NSwgMTIxLCA3LCA1MywgLTE3
+LCAtNjAsIC00NCwgMjIsIDEyNV0=$zIn8nlI3UhB6CLDUqNtOrqWUcY5UhZbmKj1rzKKwM9w=
+
+--
+
+== There is also a clojure variant of the code
+
+[source,clojure]
+--
+(ns ofbiz-tooling
+  (:import (org.apache.ofbiz.base.crypto HashCrypt)))
+
+
+(comment
+  (org.apache.ofbiz.base.crypto.HashCrypt/getHashType)
+  ;; => "SHA"
+
+  (HashCrypt/pbkdf2HashCrypt "PBKDF2WithHmacSHA256" "" "s3cret-pa$$word")
+  ;; => "{PBKDF2-SHA256}10000$Wy03MywgLTMsIDc0LCA3NywgLTgwLCAtMTIzLCA1NSwgLTc1LCAtNDEsIDkxLCAxMjUsIC05LCA2\r\nLCAtNzEsIDI1LCAtOTJd$TlhGiKDUW5ZTYnnI5bEEK9MS6elAid4zQEqAViwXGO0="
+
+  )
+--

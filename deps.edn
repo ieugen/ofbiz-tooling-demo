@@ -1,0 +1,24 @@
+{:paths ["src" "resources"]
+ :deps {org.apache.ofbiz/component-datafile {:mvn/version "22.01.10"
+                                             ;;:local/root "local-repo/component-datafile-22.01.10.jar"
+                                             :exclusions [org.codehaus.groovy/groovy-all]}
+        org.apache.ofbiz/base-crypto {:mvn/version "22.01.10"
+                                      ;; :local/root "local-repo/base-crypto-22.01.10.jar"
+                                      :exclusions [org.codehaus.groovy/groovy-all]
+                                      }
+
+        org.apache.ofbiz/base-util {:mvn/version "22.01.10"
+                                    ;;:local/root "local-repo/base-util-22.01.10.jar"
+                                    :exclusions [org.codehaus.groovy/groovy-all]
+                                    }
+        commons-codec/commons-codec {:mvn/version "1.16.0"}
+        commons-lang/commons-lang {:mvn/version "2.6"}
+        org.apache.commons/commons-lang3 {:mvn/version "3.14.0"}
+        org.apache.shiro/shiro-core {:mvn/version "1.13.0"}
+        org.clojure/clojure {:mvn/version "1.11.1"}
+        org.clojure/tools.deps {:mvn/version "0.18.1374"}}
+ :aliases {:dev {:jvm-opts ["-XX:-OmitStackTraceInFastThrow"
+                            "--add-opens=java.base/java.nio=ALL-UNNAMED"
+                            "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
+                            "--add-opens=java.base/java.lang=ALL-UNNAMED"
+                            "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED"]}}}

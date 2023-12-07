@@ -1,0 +1,35 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'MyCryptExample'
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'local-repo', include: '*.jar')
+    // Uncoment the ofbiz references bellow if you publih the jars / fetch from maven
+    // once https://github.com/apache/ofbiz-framework/pull/678 is merged
+//    implementation 'org.apache.ofbiz:base-util:22.01.10'
+//    implementation 'org.apache.ofbiz:base-crypto:22.01.10'
+//    implementation 'org.apache.ofbiz:component-datafile:22.01.10'
+
+    implementation 'com.ibm.icu:icu4j:73.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
+    implementation 'commons-io:commons-io:2.15.1'
+    implementation 'commons-codec:commons-codec:1.16.0'
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    implementation 'commons-validator:commons-validator:1.7'
+    implementation 'net.lingala.zip4j:zip4j:2.11.5'
+    implementation 'org.apache.tomcat:tomcat-jasper:9.0.82'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0' // the API of log4j 2
+    implementation 'org.codehaus.groovy:groovy-all:3.0.19'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
